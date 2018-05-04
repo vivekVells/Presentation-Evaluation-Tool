@@ -76,6 +76,23 @@ class RegisterStudentForms(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'}))
 
 
+# Evaluate Presentation Form
+class EvaluatePresentationForm(forms.Form):
+    reviewedfor = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Presenter Mail ID'}))
+    evaluate = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Evaluation Type'}))
+    score = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Score'}))
+    comments = forms.CharField(max_length=500, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Comments'}))
+
+# Evaluate Presentation Form
+class EvaluatePresentationFormNew(forms.Form):
+    reviewedby = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Reviewer Mail ID'}))
+    reviewedfor = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Presenter Mail ID'}))
+    eva = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Evaluation Type'}))
+    com = forms.CharField(max_length=500, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Comments'}))
+    score = forms.IntegerField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Score'}))
+
+
 # CourseForm
 class CourseForms(forms.Form):
     course_name = forms.CharField(max_length=500,

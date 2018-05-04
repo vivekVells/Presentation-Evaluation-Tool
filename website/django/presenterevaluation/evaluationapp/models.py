@@ -67,14 +67,25 @@ class StudentLog(models.Model):
         return self.studentUser
 
 class Presenter(models.Model):
+    reviewedfor = models.CharField(max_length=70)
     evaluationType = models.CharField(max_length=70)
     comments = models.CharField(max_length=1000)
     score = models.IntegerField(blank=True, null=True)
     reviewedby = models.CharField(max_length=70)
+
+    def __str__(self):
+        return "%s %s %s %s" % (self.reviewedfor, self.evaluationType, self.comments, self.reviewedby)
+
+class PresenterNew(models.Model):
+    reviewedby = models.CharField(max_length=70)
+    reviewedfor = models.CharField(max_length=20, default='')
+    eva = models.CharField(max_length=70)
+    com = models.CharField(max_length=500)
+    score = models.IntegerField(blank=True, null=True)
     created_on = models.DateTimeField(default=timezone.now)
     last_updated_on = models.DateTimeField(blank=True, null=True)
     deleted_on = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return "%s %s" % (self.username, self.password)
+        return "ID: %d Username: %s Password: %s" % (self.id, self.reviewedby, self.eva)
 

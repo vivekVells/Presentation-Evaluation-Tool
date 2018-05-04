@@ -25,13 +25,13 @@
         <link rel="shortcut icon" type="image/png" href="{% static 'images/info.png' %}"/>
 
         <!-- Other Stuffs Below -->
-        <title>Professor Home Page</title>
+        <title>Review Evaluation Home Page</title>
     </head>
         <div class="container">
             <div class="container theme-showcase" role="main">
                 <div class="">
                     <br><br>
-                    <h1 class="display-4"><center>Student Home Page</center> </h1>
+                    <h1 class="display-4"><center>Review Evaluation Home Page</center> </h1>
                 </div>
             </div>
             <div class="text-right">
@@ -39,12 +39,25 @@
             </div>
 
             <div class="container">
-                <div>
+                <form class="form-signin" method="POST" action="{% url 'evaluatepresentation' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{evaluationForm.reviewedfor}}
+                    </div>
+                    <div class="form-group">
+                        {{evaluationForm.eva}}
+                    </div>
+                    <div class="form-group">
+                        {{evaluationForm.com}}
+                    </div>
+                    <div class="form-group">
+                        {{evaluationForm.score}}
+                    </div>
                     <center>
-                        <a href="{% url 'reviewmypresentation' %}" class="btn btn-lg btn-primary">Review my evaluated presentation</a>
-                        <a href="{% url 'redirectoevaluate' %}" class="btn btn-lg btn-primary">Review others' presentation</a>
+                        <button class="btn btn-lg btn-primary" type="submit">Submit My Evaluation</button>
+                        <a href="{% url 'studenthome' %}" class="btn btn-lg btn-primary">Back</a>
                     </center>
-                </div>
+                </form>
             </div>
         </div>
     <!-- Optional JavaScript if any of bootstrap to be added must be inserted just above </body> tag -->

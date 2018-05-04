@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from . forms import AppAdminLoginForms, RegisterStudentForms, ProfessorLoginForms, RegisterProfessorForms, StudentLoginForms
-from . models import AppAdmin, AppAdminLog, Professor, ProfessorVerify, Student, StudentLog, Presenter
+from . forms import AppAdminLoginForms, RegisterStudentForms, ProfessorLoginForms, RegisterProfessorForms, StudentLoginForms, EvaluatePresentationForm, EvaluatePresentationFormNew
+from . models import AppAdmin, AppAdminLog, Professor, ProfessorVerify, Student, StudentLog, Presenter, PresenterNew
 from django.utils import timezone
 
 # user_ref is used to show the username at home page
@@ -167,9 +167,9 @@ def professorhome(request):
 def reviewevaluation(request):
     if user_exists:
         if request.method == 'POST':
-            return render(request, 'evaluationapp/reviewevaluation.html')
+            return render(request, 'evaluationapp/evaluatepresentation.html')
         else:
-            return render(request, 'evaluationapp/reviewevaluation.html')
+            return render(request, 'evaluationapp/evaluatepresentation.html')
     else:
         return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/professor/\' ')
 
@@ -208,5 +208,45 @@ def studenthome(request):
         else:
             return render(request, 'evaluationapp/studenthome.html')
     else:
-        return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/professor/\' ')
+        return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/studentlogin/\' ')
 
+
+def reviewmypresentation(request):
+    if user_exists:
+        if request.method == 'POST':
+            return redirect('studenthome')
+        else:
+            presenter = PresenterNew.objects.all()
+            reviewed_others = PresenterNew.objects.filter(reviewedby=str(user_ref))
+            being_reviewed = PresenterNew.objects.exclude(reviewedby=str(user_ref))
+
+            context = {'reviewed_others': reviewed_others, 'being_reviewed': being_reviewed, 'presenter': presenter, 'user_ref': user_ref}
+            return render(request, 'evaluationapp/reviewevaluation.html', context)
+    else:
+        return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/timeclock/\' ')
+
+def evaluatepresentation(request):
+    evaluation_form = EvaluatePresentationFormNew()
+
+    if user_exists:
+        if request.method == 'POST':
+            if evaluation_form.is_valid:
+                presenter_obj = PresenterNew (
+                    reviewedby=str(user_ref),
+                    reviewedfor=request.POST['reviewedfor'],
+                    eva=request.POST['eva'],
+                    com=request.POST['com'],
+                    score=request.POST['score']
+                )
+                presenter_obj.save()
+                return redirect('studenthome')
+            else:
+                return HttpResponse('Form Submission Invalid.. try Loging in again using the link: \'http://127.0.0.1:8000/studentlogin/\' ')
+        else:
+            context = {'evaluationForm': evaluation_form}
+            return render(request, 'evaluationapp/evaluatepresentation.html', context)
+    else:
+        return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/studentlogin/\' ')
+
+def redirectoevaluate(request):
+    return redirect('evaluatepresentation')

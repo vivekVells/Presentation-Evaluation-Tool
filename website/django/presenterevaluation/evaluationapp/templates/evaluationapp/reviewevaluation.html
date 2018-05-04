@@ -32,18 +32,87 @@
                 <div class="">
                     <br><br>
                     <h1 class="display-4"><center>Review Evaluation Home Page</center> </h1>
+                    <br>
+                    <h4 class=""><center>Security Algorithms and Protocols Presentation Evaluation</center></h4>
                 </div>
             </div>
             <div class="text-right">
-                <a href="{% url 'logoutprofessor' %}" class="btn btn-md btn-primary">Logout</a>
+                <a href="{% url 'logoutstudent' %}" class="btn btn-md btn-primary">Logout</a>
+            </div>
+            <div class="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <h5><center><br><br>Reviewing your presentation results<br></center></h5>
+                        </tr>
+                        <tr>
+                          <th scope="col"><center>Evaluation Type</center></th>
+                          <th scope="col"><center>Comments</center></th>
+                          <th scope="col"><center>Score</center></th>
+                          <th scope="col"><center>Date Received</center></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for me in being_reviewed %}
+                        <tr>
+                            <td>
+                                <center>{{me.eva}}</center>
+                            </td>
+                            <td>
+                                <center>{{me.com}}</center>
+                            </td>
+                            <td>
+                                <center>{{me.score}}</center>
+                            </td>
+                            <td>
+                                <center>{{me.created_on}}</center>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <h5><center><br><br>Your Review Over Others' Presentation<br></center></h5>
+                        </tr>
+                        <tr>
+                          <th scope="col"><center>Evaluation Type</center></th>
+                          <th scope="col"><center>Comments</center></th>
+                          <th scope="col"><center>Score</center></th>
+                          <th scope="col"><center>Date Received</center></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for me in reviewed_others %}
+                        <tr>
+                            <td>
+                                <center>{{me.eva}}</center>
+                            </td>
+                            <td>
+                                <center>{{me.com}}</center>
+                            </td>
+                            <td>
+                                <center>{{me.score}}</center>
+                            </td>
+                            <td>
+                                <center>{{me.created_on}}</center>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
 
-            <div class="container">
-                Presenters' evaluation results
-            </div>
+
             <div>
                 <center>
-                    <a href="{% url 'professorhome' %}" class="btn btn-lg btn-primary">Back</a>
+                    <br><br>
+                    <a href="{% url 'studenthome' %}" class="btn btn-lg btn-primary">Back</a>
                 </center>
             </div>
         </div>
