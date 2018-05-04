@@ -31,18 +31,18 @@
             <div class="container theme-showcase" role="main">
                 <div class="">
                     <br><br>
-                    <h1 class="display-4"><center>App Admin Log In Page</center> </h1>
+                    <h1 class="display-4"><center>Professor Log In Page</center> </h1>
                 </div>
             </div>
 
             <div class="container">
-                <form class="form-signin" method="POST" action="{% url 'appadmin' %}">
+                <form class="form-signin" method="POST" action="{% url 'professorlogin' %}">
                     {% csrf_token %}
                     <div class="form-group">
-                        {{appAdminLoginForms.username}}
+                        {{professorLoginForm.username}}
                     </div>
                     <div class="form-group">
-                        {{appAdminLoginForms.password}}
+                        {{professorLoginForm.password}}
                     </div>
                     <div>
                         <center>

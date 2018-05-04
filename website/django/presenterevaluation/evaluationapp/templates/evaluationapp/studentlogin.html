@@ -25,24 +25,24 @@
         <link rel="shortcut icon" type="image/png" href="{% static 'images/info.png' %}"/>
 
         <!-- Other Stuffs Below -->
-        <title>Presentation Evaluation Tool</title>
+        <title>Student Login Page</title>
     </head>
         <div class="container">
             <div class="container theme-showcase" role="main">
                 <div class="">
                     <br><br>
-                    <h1 class="display-4"><center>App Admin Log In Page</center> </h1>
+                    <h1 class="display-4"><center>Student Log In Page</center> </h1>
                 </div>
             </div>
 
             <div class="container">
-                <form class="form-signin" method="POST" action="{% url 'appadmin' %}">
+                <form class="form-signin" method="POST" action="{% url 'studentlogin' %}">
                     {% csrf_token %}
                     <div class="form-group">
-                        {{appAdminLoginForms.username}}
+                        {{studentLoginForm.username}}
                     </div>
                     <div class="form-group">
-                        {{appAdminLoginForms.password}}
+                        {{studentLoginForm.password}}
                     </div>
                     <div>
                         <center>

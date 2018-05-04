@@ -7,9 +7,23 @@ class AppAdminLoginForms(forms.Form):
     password = forms.CharField(max_length=30,
                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
 
-
 # Professor Login Form
 class ProfessorLoginForms(forms.Form):
+    username = forms.CharField(max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username'}))
+    password = forms.CharField(max_length=30,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
+
+# Student Login Form
+class StudentLoginForms(forms.Form):
+    username = forms.CharField(max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username'}))
+    password = forms.CharField(max_length=30,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
+
+
+# Professor Login Form
+class RegisterProfessorForms(forms.Form):
     mailId = forms.CharField(max_length=30,
                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Mail ID'}))
     password = forms.CharField(max_length=30,
@@ -36,7 +50,7 @@ class ProfessorLoginForms(forms.Form):
 
 
 # Student Login Form
-class StudentLoginForms(forms.Form):
+class RegisterStudentForms(forms.Form):
     mailId = forms.CharField(max_length=30,
                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Mail ID'}))
     password = forms.CharField(max_length=30,

@@ -25,38 +25,25 @@
         <link rel="shortcut icon" type="image/png" href="{% static 'images/info.png' %}"/>
 
         <!-- Other Stuffs Below -->
-        <title>Presentation Evaluation Tool</title>
+        <title>Professor Home Page</title>
     </head>
         <div class="container">
             <div class="container theme-showcase" role="main">
                 <div class="">
                     <br><br>
-                    <h1 class="display-4"><center>App Admin Log In Page</center> </h1>
+                    <h1 class="display-4"><center>Professor Home Page</center> </h1>
                 </div>
+            </div>
+            <div class="text-right">
+                <a href="{% url 'logoutprofessor' %}" class="btn btn-md btn-primary">Logout</a>
             </div>
 
             <div class="container">
-                <form class="form-signin" method="POST" action="{% url 'appadmin' %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {{appAdminLoginForms.username}}
-                    </div>
-                    <div class="form-group">
-                        {{appAdminLoginForms.password}}
-                    </div>
-                    <div>
-                        <center>
-                            <button class="btn btn-lg btn-primary" type="submit">Log In</button>
-                            <pre><br>{{message}}</pre>
-                        </center>
-                    </div>
-                </form>
-            </div>
-
-            <div class="container" style="text-align: center; position: fixed; bottom: 5px">
-                <footer>
-                    <small>&copy; Copyright 2018, Kevtastic Krakens Tech Pvt Ltd</small>
-                </footer>
+                <div>
+                    <center>
+                        <a href="{% url 'reviewevaluation' %}" class="btn btn-lg btn-primary">Review Presenters' Evaluation</a>
+                    </center>
+                </div>
             </div>
         </div>
     <!-- Optional JavaScript if any of bootstrap to be added must be inserted just above </body> tag -->

@@ -13,19 +13,19 @@
         <meta name="author" content="">
 
         <!-- Bootstrap core CSS -->
-        <link href="{% static 'css/scheduledinfodelivery/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/evaluationapp/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Bootstrap theme -->
-        <link href="{% static 'css/scheduledinfodelivery/bootstrap-theme.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/evaluationapp/bootstrap-theme.min.css' %}" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="{% static 'css/scheduledinfodelivery/sign.css' %}" rel="stylesheet">
-        <link href="{% static 'css/scheduledinfodelivery/theme.css' %}" rel="stylesheet">
+        <link href="{% static 'css/evaluationapp/sign.css' %}" rel="stylesheet">
+        <link href="{% static 'css/evaluationapp/theme.css' %}" rel="stylesheet">
 
         <!-- Tab icon -->
         <link rel="shortcut icon" type="image/png" href="{% static 'images/info.png' %}"/>
 
         <!-- Other Stuffs Below -->
-        <title>Information Deliverer</title>
+        <title>Register Professor</title>
     </head>
     <body>
         <div class="container" role="main">
@@ -35,38 +35,41 @@
         </div>
 
         <div class="container">
-            <form class="form-signin" method="POST" action="{% url 'register' %}">
+            <form class="form-signin" method="POST" action="{% url 'registerprofessor' %}">
                 {% csrf_token %}
                 <div class="form-group">
-                    {{regform.username}}
+                    {{registerProfessorForm.mailId}}
                 </div>
                 <div class="form-group">
-                    {{regform.password}}
+                    {{registerProfessorForm.password}}
                 </div>
                 <div class="form-group">
-                    {{regform.recovery_answer}}
+                    {{registerProfessorForm.recovery_answer}}
                 </div>
                 <div class="form-group">
-                    {{regform.recovery_email}}
+                    {{registerProfessorForm.recovery_email}}
                 </div>
                 <div class="form-group">
-                    {{regform.first_name}}
+                    {{registerProfessorForm.first_name}}
                 </div>
                 <div class="form-group">
-                    {{regform.middle_name}}
+                    {{registerProfessorForm.middle_name}}
                 </div>
                 <div class="form-group">
-                    {{regform.last_name}}
+                    {{registerProfessorForm.last_name}}
                 </div>
                 <div class="form-group">
-                    {{regform.department}}
+                    {{registerProfessorForm.department}}
                 </div>
                 <div class="form-group">
-                    {{regform.phone_number}}
+                    {{registerProfessorForm.collegeName}}
+                </div>
+                <div class="form-group">
+                    {{registerProfessorForm.phone_number}}
                 </div>
                 <center>
                     <button class="btn btn-lg btn-primary" type="submit">Register</button>
-                    <a href="{% url 'index' %}" class="btn btn-lg btn-primary">Back</a>
+                    <a href="{% url 'appadminhome' %}" class="btn btn-lg btn-primary">Back</a>
                 </center>
             </form>
         </div>
