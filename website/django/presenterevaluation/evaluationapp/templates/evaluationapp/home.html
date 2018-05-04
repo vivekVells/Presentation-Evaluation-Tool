@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/scheduledinfodelivery/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Bootstrap theme -->
+        <link href="{% static 'css/scheduledinfodelivery/bootstrap-theme.min.css' %}" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/scheduledinfodelivery/sign.css' %}" rel="stylesheet">
+        <link href="{% static 'css/scheduledinfodelivery/theme.css' %}" rel="stylesheet">
+
+        <!-- Tab icon -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/info.png' %}"/>
+
+        <!-- Other Stuffs Below -->
+        <title>Information Deliverer</title>
+    </head>
+    <body>
+        <div class="container" role="main">
+            <p>
+                <center>
+                    <b>ALPHA phase</b> - page under development
+                    <p>
+            NEED to integrate from the <b>Workshop Info Getter API</b> || Waiting for DB permission access
+                    </p>
+                </center>
+            </p>
+            <hr>
+
+            <h1 class="display-4">
+                <center>Information Deliverer Home page</center>
+            </h1>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            Logged in as <b>{{username}}</b> at {% now "SHORT_DATETIME_FORMAT" %}
+
+                        </td>
+                        <td class="text-right">
+                            <a href="{% url 'logout' %}" class="btn btn-md btn-primary">Logout</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <div>
+                                The Information will be delivered to given email ids <b>every day 8AM</b> based on Workshop Session Status
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <center><h5>Scheduled Information Modifier</h5></center>
+                    <p><center>Mail List Handling Action - Refurbishment under progress</center></p>
+                    <form class="form-signin" method="POST" action="{% url 'home' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <br>
+                            Modify Existing Recipient's Email List <br>
+                            {{emailform.to_address}}
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button class="btn btn-lg btn-primary" type="">Modify</button>
+                        </div>
+                    </form>
+                </div>
+                <div style="border-left:1px solid #000;height:500px"></div>
+                <div class="col-sm">
+                    <center>
+                        <h5>Workshop information scheduled tomorrow at 8 AM</h5>
+                        <br>Information being pulled from this website: <a href="https://www.marist.edu/it/digitaleducation/workshops.html" target="_blank">https://www.marist.edu/it/digitaleducation/workshops.html</a>
+                    </center>
+                    <br> <br>
+                    <p>
+                        Workshop Summary:
+                        <ol>
+                        {% for workshop_category, workshop_title, workshop_duration, workshop_location in workshops_info%}
+                            <li>
+                                Category: {{workshop_category}} <br>
+                                Title: {{workshop_title}} <br>
+                                Duration: {{workshop_duration}} <br>
+                                Location: {{workshop_location}}
+                            </li> <br>
+                        {% endfor %}
+                        </ol>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <!-- Optional JavaScript if any of bootstrap to be added must be inserted just above </body> tag -->
+    </body>
+</html>
