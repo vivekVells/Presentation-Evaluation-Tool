@@ -167,7 +167,8 @@ def professorhome(request):
 def reviewevaluation(request):
     if user_exists:
         if request.method == 'POST':
-            return render(request, 'evaluationapp/evaluatepresentation.html')
+            context = {'user_ref': user_ref}				
+            return render(request, 'evaluationapp/evaluatepresentation.html', context)
         else:
             return render(request, 'evaluationapp/evaluatepresentation.html')
     else:
@@ -193,7 +194,7 @@ def studentlogin(request):
     if request.method == 'POST':
         if studnet_login_form.is_valid:
             if validate_student_login(request):
-                return render(request, 'evaluationapp/studenthome.html')
+                return redirect('studenthome')
             else:
                 context = {'studentLoginForm' : studnet_login_form, 'message' : 'Username and Password did not match'}
                 return render(request, 'evaluationapp/studentlogin.html', context)
@@ -204,9 +205,11 @@ def studentlogin(request):
 def studenthome(request):
     if user_exists:
         if request.method == 'POST':
-            return render(request, 'evaluationapp/studenthome.html')
+            context = {'user_ref': user_ref}
+            return render(request, 'evaluationapp/studenthome.html', context)
         else:
-            return render(request, 'evaluationapp/studenthome.html')
+            context = {'user_ref' : user_ref} 
+            return render(request, 'evaluationapp/studenthome.html', context)
     else:
         return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/studentlogin/\' ')
 
@@ -243,7 +246,7 @@ def evaluatepresentation(request):
             else:
                 return HttpResponse('Form Submission Invalid.. try Loging in again using the link: \'http://127.0.0.1:8000/studentlogin/\' ')
         else:
-            context = {'evaluationForm': evaluation_form}
+            context = {'evaluationForm': evaluation_form, 'user_ref': user_ref}
             return render(request, 'evaluationapp/evaluatepresentation.html', context)
     else:
         return HttpResponse('Login again using the link: \'http://127.0.0.1:8000/studentlogin/\' ')

@@ -35,7 +35,8 @@
                 </div>
             </div>
             <div class="text-right">
-                <a href="{% url 'logoutstudent' %}" class="btn btn-md btn-primary">Logout</a>
+								<p class="text-left">Logged in as {{user_ref}}</p>
+                <a class="btn btn-md btn-primary text-right" href="{% url 'logoutstudent' %}">Logout</a>
             </div>
 
             <div class="container">
@@ -53,9 +54,10 @@
                     <div class="form-group">
                         {{evaluationForm.score}}
                     </div>
-                    <center>
+                    <center class="row">
                         <button class="btn btn-lg btn-primary" type="submit">Submit My Evaluation</button>
-                        <a href="{% url 'studenthome' %}" class="btn btn-lg btn-primary">Back</a>
+                        &nbsp; &nbsp; 
+												<a href="{% url 'studenthome' %}" class="btn btn-lg btn-primary">Back</a>
                     </center>
                 </form>
             </div>

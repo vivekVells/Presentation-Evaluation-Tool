@@ -37,7 +37,8 @@
                 </div>
             </div>
             <div class="text-right">
-                <a href="{% url 'logoutstudent' %}" class="btn btn-md btn-primary">Logout</a>
+								<p class="text-left">Logged in as {{user_ref}}</p>
+                <a class="btn btn-md btn-primary text-right" href="{% url 'logoutstudent' %}">Logout</a>
             </div>
             <div class="table">
                 <table class="table">
@@ -46,6 +47,7 @@
                             <h5><center><br><br>Reviewing your presentation results<br></center></h5>
                         </tr>
                         <tr>
+                          <th scope="col"><center>Received Review From</center></th>
                           <th scope="col"><center>Evaluation Type</center></th>
                           <th scope="col"><center>Comments</center></th>
                           <th scope="col"><center>Score</center></th>
@@ -56,6 +58,9 @@
                     <tbody>
                         {% for me in being_reviewed %}
                         <tr>
+                            <td>
+                                <center>Anonymous</center>
+                            </td>														
                             <td>
                                 <center>{{me.eva}}</center>
                             </td>
@@ -80,6 +85,7 @@
                             <h5><center><br><br>Your Review Over Others' Presentation<br></center></h5>
                         </tr>
                         <tr>
+													<th scope="col"><center>Reviewed For</center></th>
                           <th scope="col"><center>Evaluation Type</center></th>
                           <th scope="col"><center>Comments</center></th>
                           <th scope="col"><center>Score</center></th>
@@ -90,6 +96,9 @@
                     <tbody>
                         {% for me in reviewed_others %}
                         <tr>
+                            <td>
+                                <center>{{me.reviewedfor}}</center>
+                            </td>												
                             <td>
                                 <center>{{me.eva}}</center>
                             </td>
