@@ -6,8 +6,13 @@ A Progressive Secure Web Application to evaluate the Presenter's presentation sk
 ### Project Working Demo
 - [Video Link](https://drive.google.com/open?id=13AzwiiyqGelA-GXrr3fCDm-0DwkWvvty)
 - [Working Demo - GIF](https://github.com/vivekVells/Presentation-Evaluation-Tool/blob/master/demo/Presentation%20Evaluation%20App%20Demo%20-%20Version%201.gif)
-- [Working Demo - PDF](https://github.com/vivekVells/Presentation-Evaluation-Tool/blob/master/demo/Presentation%20Evaluation%20Tool.pdf)
 - [Working Demo Files](https://github.com/vivekVells/Presentation-Evaluation-Tool/tree/master/demo)
+- [Working Demo - PDF](https://github.com/vivekVells/Presentation-Evaluation-Tool/blob/master/demo/Presentation%20Evaluation%20Tool.pdf)
+  - View this pdf file to review what I did for this project that involves 
+    - How I proposed a project to increase my professor's working efficiency by making his evaluation online and avoiding the usage of paper
+    - The frontend and backend design
+    - How django being used - password hashing - data encryption    - 
+
 ### Objective
 - To reduce professor’s time consumption for his presentation evaluation works
 ### Issue to solve
