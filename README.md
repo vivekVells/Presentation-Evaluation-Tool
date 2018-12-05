@@ -56,8 +56,8 @@ A Progressive Secure Web Application to evaluate the Presenter's presentation sk
     - give username and password
 - Step 4: goto port link: http://127.0.0.1:8000/admin - for admin dashboard where you can view/modify the db backend values (username: username_you_gave_above | password: password_you_gave_above)    
 - Step 5: goto port link: http://127.0.0.1:8000/appadmin - (values are already added) for appadmin (username: appadmin | password: appadmin)
-- Step 6: goto port link: http://127.0.0.1:8000/professorlogin - (values are already added - 'professor' table) for professor login (create new one using step 4 above in 'professor' table above)
-- Step 7: goto port link: http://127.0.0.1:8000/studentlogin - (values are already added - 'student' table) 2 students are preadded. v@m.edu with password v123 and k@m.edu with password k123
+- Step 6: goto port link: http://127.0.0.1:8000/evaluate/professorlogin - (values are already added - 'professor' table) for professor login (create new one using step 4 above in 'professor' table above)
+- Step 7: goto port link: http://127.0.0.1:8000/evaluate/studentlogin - (values are already added - 'student' table) 2 students are preadded. v@m.edu with password v123 and k@m.edu with password k123
 - Step 8: login using any student login credentials in step 7 and play around. thats' it. you will be able to figure out easily.
 ## App Working Functionality Previews
 ### Preview 
